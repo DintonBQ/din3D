@@ -1,0 +1,36 @@
+Вибір компілятора MinGW g++:
+	на Windows для Windows://головний режим, ПК
+		msvcrt-запуск на Windows 7/10
+		i686 dwarf - 32 біт AMD
+		x86_64 seh - 64 біт AMD
+		posix краще підходить для кросплатформенних застосунків ніж win32, працює навіть з WinAPI
+		
+		мій вибір:
+			i686-15.2.0-release-posix-dwarf-msvcrt-rt_v13-rev0.7z
+			x86_64-15.2.0-release-posix-seh-msvcrt-rt_v13-rev0.7z
+			
+			команда:
+				cls && g++ -o OnWindows.exe *.cpp -Wall -lgdi32 && OnWindows.exe
+
+	на Ubuntu AMD 64 bit LiveUSB для Windows(кроскомпіляція)://ПК
+		sudo -i
+		enable wifi before apt update
+		yes Y|apt update
+		yes Y|apt install mingw-w64
+		x86_64-w64-mingw32-g++ *.cpp -o OnDebian.exe -static -lgdi32 -w -Wfatal-errors
+	на Debian AMD 64 bit LiveUSB для Debian AMD 64 bit LiveUSB://ПК
+		sudo -i
+		enable wifi before apt update
+		yes Y|apt update
+		yes Y|apt install libsdl2-dev
+		yes Y|apt install build-essential
+		clear && g++ -o output *.cpp -lSDL2main -lSDL2 -Wall && ./output
+		#якщо 777: && cp output /root/ && chmod 777 /root/output && /root/output
+	на Debian ARM 64 bit для Debian ARM 64 bit://для телефона proot середовище
+
+
+*******************
+try{
+}catch(exception &e){
+cout<<"Exception="<<e.what()<<endl;
+}
